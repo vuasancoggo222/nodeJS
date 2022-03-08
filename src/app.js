@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+var cors = require('cors')
+app.use(cors())
 // app.get('/',(req, res) => {
 //     res.send('Hello World')
 //   })
@@ -10,7 +12,7 @@ const app = express()
 //     ]
 //     res.json(data)
 // })
-app.use(cors())
+
 app.get("/api/users",(req, res) => {
     const data = [
         {id:1, name: "User 1"},

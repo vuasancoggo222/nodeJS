@@ -7,15 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="list">
+    <ul class="list">
 
-    </div>
+    </ul>
     <script>
+        const list = document.querySelector(".list")
         async function get(){
             const response = await fetch("http://localhost:3001/api/users")
         .then(response => response.json())
-        .then(data => console.log(data))
-        }
+        .then(data => list.innerHTML = data.map(res =>{
+            return`
+            <li>${res.id}-${res.name}</li> 
+            `
+        }).join("")
+        )}
         get()
     </script>
 </body>
