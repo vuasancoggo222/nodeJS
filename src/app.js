@@ -1,26 +1,14 @@
-const express = require('express')
-const app = express()
-var cors = require('cors')
+import express from 'express';
+import cors from 'cors';
+import productRoute from './routes/product';
+import morgan from 'morgan';
+const app = express();
 app.use(cors())
-// app.get('/',(req, res) => {
-//     res.send('Hello World')
-//   })
-// app.get("/api/products",(req, res) => {
-//     const data = [
-//    {id:1, name: "Prodcut A"},
-//    {id:2, name: "Prodcut b"}
-//     ]
-//     res.json(data)
-// })
+app.use(morgan('tiny'))
+app.use(express.json())
+app.use('/api',productRoute)
 
-app.get("/api/users",(req, res) => {
-    const data = [
-        {id:1, name: "User 1"},
-        {id:2, name: "User 2"},
-        {id:3, name: "User 3"},
-    ]
-    res.json(data)
+  const PORT = 5000
+app.listen(PORT,() => {
+  console.log("sever dang chay");
 })
-
-
-app.listen(3001)
