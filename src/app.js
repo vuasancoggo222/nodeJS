@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import productRoute from './routes/product';
 import authRoute from './routes/users'
+import categoryRoute from './routes/category';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import { readdirSync } from "fs"
@@ -16,6 +17,7 @@ app.use(express.json())
 // readdirSync(`${__dirname}/routes`).map(file => app.use("/api", require(`./routes/${file}`))) ;
 app.use("/api",productRoute)
 app.use("/api",authRoute)
+app.use("/api",categoryRoute)
 //Connect DB
 mongoose.connect("mongodb://localhost:27017/nodejs")
 .then(()=> console.log("Ket noi database thanh cong"))
